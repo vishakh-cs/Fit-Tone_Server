@@ -13,7 +13,7 @@ app.use(express.json({ limit: "50mb" }));
 app.use(express.urlencoded({ extended: true })); 
 
 const corsOptions = {
-  origin: process.env.CLIENT_URL,
+  origin: '*',
   methods: 'GET,POST',
   allowedHeaders: 'Content-Type,Authorization',
 };
