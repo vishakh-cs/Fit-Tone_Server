@@ -192,8 +192,9 @@ export const addWorkout = async (req, res, next) => {
         );
       }
     });
-     // Calculate calories burnt for each workout
-     await parsedWorkouts.forEach(async (workout) => {
+
+    // Calculate calories burnt for each workout
+    await parsedWorkouts.forEach(async (workout) => {
       workout.caloriesBurned = parseFloat(calculateCaloriesBurnt(workout));
       await Workout.create({ ...workout, user: userId });
     });
@@ -224,11 +225,10 @@ const parseWorkoutLine = (parts) => {
   }
   return null;
 };
-
 // Function to calculate calories burnt for a workout
 const calculateCaloriesBurnt = (workoutDetails) => {
   const durationInMinutes = parseInt(workoutDetails.duration);
   const weightInKg = parseInt(workoutDetails.weight);
   const caloriesBurntPerMinute = 5;
   return durationInMinutes * caloriesBurntPerMinute * weightInKg;
-};
+}
