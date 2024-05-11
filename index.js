@@ -8,7 +8,9 @@ import UserRoutes from "./routes/UserRoute.js";
 dotenv.config();
 
 const app = express();
-app.use(cors());
+app.use(cors({
+  origin: 'https://fit-tone.vercel.app'
+}));
 app.use(express.json({ limit: "50mb" }));
 app.use(express.urlencoded({ extended: true })); 
 
